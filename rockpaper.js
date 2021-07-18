@@ -1,3 +1,4 @@
+/*
 const getUserChoice = userInput => {
     userInput = userInput.toLowerCase();
     if (userInput === 'rock' || userInput === 'paper' || userInput === 'scissors' || userInput === 'bomb') {
@@ -6,7 +7,21 @@ const getUserChoice = userInput => {
         console.log('error: invalid input!!')
     }
 }
+*/
 
+//gets user input and compare to items in the array
+const getUserChoice = userInput => {
+    selectionsArr = ['rock', 'paper', 'scissors', 'bomb'];
+    userInput = userInput.toLowerCase();
+    for (let i in selectionsArr) {
+        if (userInput === selectionsArr[i]) {
+            return userInput;
+        }
+    }
+    console.log('error: invalid input!!');
+}
+
+//get system input
 const getComputerChoice = () => {
     let randChoice = Math.floor(Math.random() * 3);
     switch (randChoice) {
@@ -22,6 +37,7 @@ const getComputerChoice = () => {
     }
 }
 
+//determine winner
 const determineWinner = (userChoice, computerChoice) => {
     if (userChoice === computerChoice) {
         return 'Game is tie';
@@ -55,9 +71,15 @@ const determineWinner = (userChoice, computerChoice) => {
     }
 }
 
+//where game is played...user enters a value
 const playGame = () => {
-    let userChoice = getUserChoice('paper');
+    let userChoice = getUserChoice('dannida');
     let computerChoice = getComputerChoice()
+
+    //error handler
+    if (userChoice === undefined) {
+        return
+    }
 
     console.log('User threw: ' + userChoice);
     console.log('The computer threw:' + computerChoice);
